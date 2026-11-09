@@ -1,0 +1,13 @@
+DirectoryIndex index.php
+Options -Indexes
+
+RewriteEngine On
+RewriteBase /sistem-parkir/
+
+# Biarkan file/folder yang benar-benar ada di root tetap bisa diakses.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# URL selain file/folder diarahkan ke front controller MVC.
+RewriteRule ^ public/index.php [L]
